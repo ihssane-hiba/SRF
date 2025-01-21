@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+    <style>
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .movie-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .movie-card img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .movie-card h3 {
+            font-size: 1.2em;
+            margin: 10px 0 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Movie Posters</h1>
+    {% if movies %}
+    <div class="movie-grid">
+        {% for movie in movies %}
+        <div class="movie-card">
+            <img src="{{ movie['poster'] }}" alt="Poster">
+            <h3>{{ movie['title'] }}</h3>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No movies found.</p>
+    {% endif %}
+</body>
+</html>
